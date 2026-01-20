@@ -714,7 +714,7 @@ userInputService.MouseIconEnabled = false
 	end)
 
 	AddConnection(UserInputService.InputBegan, function(Input)
-		if Input.KeyCode == Enum.KeyCode.M then
+		if Input.KeyCode == Enum.keycode.X then
 						if UIHidden then
 									MainWindow.Visible = true
 							buttonmodal.Modal = true
@@ -730,7 +730,7 @@ userInputService.MouseIconEnabled = false
 
 AddConnection(UserInputService.InputBegan, function(Input, gameProcessed)
 	if gameProcessed then return end
-	if Input.KeyCode == Enum.KeyCode.M then
+	if Input.KeyCode == Enum.keycode.X then
 		UIVisible = not UIVisible
 		MainWindow.Visible = UIVisible
 		buttonmodal.Modal = UIVisible
