@@ -1503,26 +1503,27 @@ function OrionLib:MakeWindow(WindowConfig)
 
 	AddConnection(UserInputService.InputBegan, function(Input, Focus)
 		if not Focus then
-			if Input.KeyCode == Enum.KeyCode[WindowConfig.KeyToOpenWindow] and UIHidden then
-				MainWindow.Visible = true
-				UIHidden = false
-				if WindowConfig.FreeMouse then
-					UnlockMouse(true)
-				end
+			if Input.KeyCode == Enum.KeyCode.X and UIHidden then
+    MainWindow.Visible = true
+    UIHidden = false
+    if WindowConfig.FreeMouse then
+        UnlockMouse(true)
+    end
 
-				showMobileOpenButton()
-			elseif Input.KeyCode == Enum.KeyCode[WindowConfig.KeyToOpenWindow] and not UIHidden then
-				MainWindow.Visible = false
-				UIHidden = true
+    showMobileOpenButton()
+elseif Input.KeyCode == Enum.KeyCode.X and not UIHidden then
+    MainWindow.Visible = false
+    UIHidden = true
 
-				if WindowConfig.FreeMouse then
-					UnlockMouse(false)
-				end
-				OrionLib:MakeNotification({
-					Name = "Interface Hidden",
-					Content = "Tap "  .. WindowConfig.KeyToOpenWindow .. " to reopen the interface",
-					Time = 3
-				})
+    if WindowConfig.FreeMouse then
+        UnlockMouse(false)
+    end
+    OrionLib:MakeNotification({
+        Name = "Interface Hidden",
+        Content = "Tap X to reopen the interface",
+        Time = 3
+    })
+end
 
 				showMobileOpenButton()
 			end
