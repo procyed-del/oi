@@ -15,7 +15,7 @@ if success then
 else
     return
 end
-_G.firsttimeinjection = false
+_G.firsttimeinjection = true
 local player = game.Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
@@ -785,11 +785,11 @@ end)
 		})
 
 		TweenService:Create(LoadSequenceLogo, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageTransparency = 0, Position = UDim2.new(0.5, 0, 0.5, 0)}):Play()
-		wait(0.8)
+
 		TweenService:Create(LoadSequenceLogo, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, -(LoadSequenceText.TextBounds.X/2), 0.5, 0)}):Play()
-		wait(0.3)
+	
 		TweenService:Create(LoadSequenceText, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
-		wait(5)
+
 		TweenService:Create(LoadSequenceText, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 1}):Play()
 		MainWindow.Visible = true
 		LoadSequenceLogo:Destroy()
@@ -2154,6 +2154,22 @@ end
 
 function OrionLib:Destroy()
 	Orion:Destroy()
+end
+
+local success, result = pcall(function()
+    return _G.firsttimeinjection
+end)
+local player = game.Players.LocalPlayer
+local userInputService = game:GetService("UserInputService")
+
+userInputService.MouseIconEnabled = true
+if success then
+    if result then
+		MainWindow:Destroy()
+    return
+    end
+else
+    return
 end
 
 return OrionLib
