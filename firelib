@@ -77,7 +77,7 @@ function OrionLib:DestroyLib()
     end
     table.clear(OrionLib.Connections)
     
-    UnlockMouse(false)
+    UnlockMouse(true)
     Orion:Destroy()
 end
 
@@ -1168,7 +1168,7 @@ function OrionLib:MakeWindow(WindowConfig)
 		UIHidden = true
 		
 		if WindowConfig.FreeMouse then
-			UnlockMouse(false)
+			UnlockMouse(true)
 		end
 		
 	end)
@@ -1186,7 +1186,7 @@ function OrionLib:MakeWindow(WindowConfig)
 				UIHidden = true
 
 				if WindowConfig.FreeMouse then
-					UnlockMouse(false)
+					UnlockMouse(true)
 				end
 				OrionLib:MakeNotification({
 					Name = "Interface Hidden",
@@ -2663,7 +2663,7 @@ function OrionLib:MakeWindow(WindowConfig)
 					Callback = function(Value)
 						OrionLib.UMouseMode = Value 
 						if OrionLib.FreeMouse then
-							UnlockMouse(false)
+							UnlockMouse(true)
 							task.wait(0.1)
 							UnlockMouse(true)
 						end
@@ -3212,7 +3212,7 @@ function OrionLib:MakeWindow(WindowConfig)
 end   
 
 function OrionLib:Destroy()
-	UnlockMouse(false)
+	UnlockMouse(true)
 	Orion:Destroy()
 end
 
